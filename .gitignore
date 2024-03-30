@@ -1,0 +1,8 @@
+# Ignore virtual environment
+myenv/
+
+# Ignore .env file containing sensitive and configuration data
+.env
+
+# Ignore the log files
+*.log
