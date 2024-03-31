@@ -6,3 +6,6 @@ myenv/
 
 # Ignore the log files
 *.log
+
+# Ignore scratch files
+*scratch*
