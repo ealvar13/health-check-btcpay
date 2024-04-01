@@ -12,8 +12,11 @@ from logging.handlers import RotatingFileHandler
 # Create a custom formatter
 log_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 
+# Use an environment variable to specify the log file path
+log_file_path = os.getenv('BTCPAY_HEALTH_LOG_PATH', 'btcpay_health_checks.log')
+
 # Create a RotatingFileHandler
-logHandler = RotatingFileHandler('btcpay_health_checks.log', mode='a', maxBytes=5*1024*1024, 
+logHandler = RotatingFileHandler(log_file_path, mode='a', maxBytes=5*1024*1024, 
                                  backupCount=2, encoding=None, delay=0)
 logHandler.setFormatter(log_formatter)
 logHandler.setLevel(logging.INFO)

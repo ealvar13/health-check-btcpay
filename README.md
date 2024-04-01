@@ -47,6 +47,33 @@ To run the script, ensure you're in the project directory and your virtual envir
 ```
 
 ## Scheduling with cron
-To run this script at regular intervals, you can set up a cron job. For example, to run the script every day, edit your crontab with crontab -e and add the following line:
+To run this script at regular intervals, you can set up a cron job. For example, to run the script every day, edit your crontab with crontab -e.
 
-**TODO: add a working cron example**
+Note this example assumes you are using a Linux server to schedule this task.
+
+First, you need to find the path to your virtual environment to ensure the commands run correctly.
+
+```bash
+$ source venv/bin/activate
+(venv) $ which python
+```
+
+Mark down the location of the virtual environment.
+
+```bash
+$ crontab -e
+```
+
+Now add a line similar to this to the file:
+
+```bash
+30 11 * * * cd /absolute/path/to/your/script/directory && ./path/to/your/venv/bin/python health-check-btcpay.py
+```
+
+Save your new crontab and you should be good to go.  You can check if the job was scheduled successfully with:
+
+```bash
+$ crontab -l
+```
+
+This runs daily at 11:30am in the server local time.  Adjust time and schedule as wanted.   
